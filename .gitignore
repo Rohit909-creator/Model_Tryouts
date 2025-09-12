@@ -1,1 +1,15 @@
 /deeplearningenv/
+/repo_renewal/__pycache__
+/FOURIER_VS_ATTENTION/tokenizer_content.txt
+/FOURIER_VS_ATTENTION/Tokens_small.pt
+/FOURIER_VS_ATTENTION/Tokens.pt
+/FOURIER_VS_ATTENTION/tokenizer_content.txt
+/HRM/__pycache__
+/HRM/Dataset
+/HRM/Data.pt
+/HRM/epoch=0-step=59844.ckpt
+/HRM/Label_Data.pt
+/HuggingfaceModels/ModelFiles
+Train_data.jsonl
+Train_data.listl
+/.tmp
