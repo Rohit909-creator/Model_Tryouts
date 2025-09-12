@@ -17,7 +17,7 @@ class SpikeLayer(nn.Module):
         super().__init__()
         self.weights = torch.randn((out_features, in_features))
         self.ltp = torch.randn((out_features, in_features)).fill_(0.3)
-
+        self.dropout = nn.Dropout(0.2)
         self.activation = activation
 
         self.threshold = torch.tensor(0.5, dtype=torch.float32)
@@ -26,7 +26,7 @@ class SpikeLayer(nn.Module):
         weight = self.weights.T + self.ltp.T
         
         # update_matrix =  weight>= self.threshold
-        out = x @ weight
+        out = self.dropout(x @ weight)
         
         if self.activation:
             out = nn.functional.sigmoid(out) >= self.threshold
@@ -47,16 +47,16 @@ if __name__ == "__main__":
     layer2 = SpikeLayer(6, 3)
     data = torch.tensor([x[0]], dtype=torch.float32)
     out = layer2(layer(data))
-    # print(f"Output: {out}")
-    # print(f"shape: {out.shape}\n")
+    print(f"Output: {out}")
+    print(f"shape: {out.shape}\n")
     
     data = torch.tensor([x[50]], dtype=torch.float32)
     out = layer2(layer(data))
-    # print(f"Output: {out}")
-    # print(f"shape: {out.shape}\n")
+    print(f"Output: {out}")
+    print(f"shape: {out.shape}\n")
 
     data = torch.tensor([x[110]], dtype=torch.float32)
     out = layer2(layer(data))
-    # print(f"Output: {out}")
-    # print(f"shape: {out.shape}\n")
+    print(f"Output: {out}")
+    print(f"shape: {out.shape}\n")
     
